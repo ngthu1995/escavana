@@ -6,8 +6,8 @@ import { Inter, Inconsolata } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next.js",
-  description: "A Next.js project with Tailwind",
+  title: "Escavana",
+  description: "Feel at home, away from ",
   keywords: "Next.js, Tailwind",
 };
 
