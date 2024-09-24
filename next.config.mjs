@@ -4,9 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.course-api.com",
-        port: "",
-        pathname: "/images/**",
+        hostname: "img.clerk.com",
       },
     ],
   },
