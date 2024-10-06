@@ -7,7 +7,10 @@ import ImageContainer from "@/components/properties/ImageContainer";
 import BookingCalendar from "@/components/properties/BookingCalendar";
 import PropertyDetails from "@/components/properties/PropertyDetails";
 import UserInfo from "@/components/properties/UserInfo";
+import Description from "@/components/properties/Description";
+import Amenities from "@/components/properties/Amenities";
 import PropertyRating from "@/components/card/PropertyRating";
+import { Separator } from "@/components/ui/separator";
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
@@ -35,7 +38,10 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
             <PropertyRating inPage propertyId={property.id} />
           </div>
           <PropertyDetails details={details} />
-          <UserInfo profile={{ firstName, profileImage }} />;
+          <UserInfo profile={{ firstName, profileImage }} />
+          <Separator className="mt-4" />
+          <Description description={property.description} />
+          <Amenities amenities={property.amenities} />
         </div>
         <div className="lg:col-span-4 flex flex-col items-center">
           <BookingCalendar />
