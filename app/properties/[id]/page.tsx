@@ -5,6 +5,8 @@ import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import ShareButton from "@/components/properties/ShareButton";
 import ImageContainer from "@/components/properties/ImageContainer";
 import BookingCalendar from "@/components/properties/BookingCalendar";
+import PropertyDetails from "@/components/properties/PropertyDetails";
+import UserInfo from "@/components/properties/UserInfo";
 import PropertyRating from "@/components/card/PropertyRating";
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
@@ -12,6 +14,9 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   if (!property) redirect("/");
   const { baths, bedrooms, beds, guests } = property;
   const details = { baths, bedrooms, beds, guests };
+
+  const firstName = property.profile.firstName;
+  const profileImage = property.profile.profileImage;
   return (
     <section>
       <BreadCrumbs name={property.name} />
@@ -29,6 +34,8 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
             <h1 className="text-xl font-bold">{property.name}</h1>
             <PropertyRating inPage propertyId={property.id} />
           </div>
+          <PropertyDetails details={details} />
+          <UserInfo profile={{ firstName, profileImage }} />;
         </div>
         <div className="lg:col-span-4 flex flex-col items-center">
           <BookingCalendar />
