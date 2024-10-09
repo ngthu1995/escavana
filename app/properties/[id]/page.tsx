@@ -13,6 +13,7 @@ import PropertyRating from "@/components/card/PropertyRating";
 import { Separator } from "@/components/ui/separator";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
+import SubmitReview from "@/components/reviews/SubmitReview";
 
 const DynamicMap = dynamic(
   () => import("@/components/properties/PropertyMap"),
@@ -52,12 +53,13 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
           <Separator className="mt-4" />
           <Description description={property.description} />
           <Amenities amenities={property.amenities} />
-          <DynamicMap countryCode={property.country} />;
+          <DynamicMap countryCode={property.country} />
         </div>
         <div className="lg:col-span-4 flex flex-col items-center">
           <BookingCalendar />
         </div>
       </section>
+      <SubmitReview propertyId={property.id} />
     </section>
   );
 }
