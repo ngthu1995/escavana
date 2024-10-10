@@ -4,7 +4,6 @@ import BreadCrumbs from "@/components/properties/BreadCrumbs";
 import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import ShareButton from "@/components/properties/ShareButton";
 import ImageContainer from "@/components/properties/ImageContainer";
-import BookingCalendar from "@/components/properties/BookingCalendar";
 import PropertyDetails from "@/components/properties/PropertyDetails";
 import UserInfo from "@/components/properties/UserInfo";
 import Description from "@/components/properties/Description";
@@ -23,6 +22,14 @@ const DynamicMap = dynamic(
   {
     ssr: false,
     loading: () => <Skeleton className="h-[400px] w-full" />,
+  }
+);
+
+const DynamicBookingWrapper = dynamic(
+  () => import("@/components/booking/BookingWrapper"),
+  {
+    ssr: false,
+    loading: () => <Skeleton className="h-[200px] w-full" />,
   }
 );
 
@@ -65,7 +72,11 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
           <DynamicMap countryCode={property.country} />
         </div>
         <div className="lg:col-span-4 flex flex-col items-center">
-          <BookingCalendar />
+          <DynamicBookingWrapper
+            propertyId={property.id}
+            price={property.price}
+            bookings={property.bookings}
+          />
         </div>
       </section>
       {reviewDoesNotExist && <SubmitReview propertyId={property.id} />}
