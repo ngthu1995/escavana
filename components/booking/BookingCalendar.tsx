@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { useProperty } from "@/utils/store";
 
-import {
-  generateDisabledDates,
-  generateDateRange,
-  defaultSelected,
-  generateBlockedPeriods,
-} from "@/utils/calendar";
+import { defaultSelected } from "@/utils/calendar";
 
 function BookingCalendar() {
   const currentDate = new Date();
